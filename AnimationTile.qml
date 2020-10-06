@@ -200,8 +200,7 @@ Tile {
 				Text {
 					id: tst
 					 text: name
-				font.pixelSize: isNxt ? 22 : 17
-				font.family: labelTitle.font.family
+				font.pixelSize: isNxt ? 22 : 17				
 				}
 			}
 		}
