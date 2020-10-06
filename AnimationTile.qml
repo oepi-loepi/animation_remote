@@ -111,7 +111,7 @@ Tile {
 
 	NewTextLabel {
 		id: startText
-		width: isNxt ? 100 : 96;  
+		width: isNxt ? 95 : 65;  
 		height: isNxt ? 35 : 28
 		buttonActiveColor: "lightgrey"
 		buttonHoverColor: "blue"
@@ -132,7 +132,7 @@ Tile {
 
 	NewTextLabel {
 		id: stopText
-		width: isNxt ? 100 : 96;  
+		width: isNxt ? 95 : 65;  
 		height: isNxt ? 35 : 30
 		buttonActiveColor: "lightgrey"
 		buttonHoverColor: "blue"
@@ -156,7 +156,7 @@ Tile {
 
 	NewTextLabel {
 		id: configText
-		width: isNxt ? 100 : 96;  
+		width: isNxt ? 95 : 65;  
 		height: isNxt ? 35 : 30
 		buttonActiveColor: "lightgrey"
 		buttonHoverColor: "blue"
