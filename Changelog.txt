@@ -1,3 +1,6 @@
+1.2.3
+- update saving of file
+
 1.2.2
 - remote triggerfile added and config screen for opt-in
 
