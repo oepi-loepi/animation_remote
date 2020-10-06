@@ -17,7 +17,7 @@ App {
 	property bool optIN : false
 	property string tmpOPTIN : "No"
 
-	property variant onkyocontrollerSettingsJson : {
+	property variant animationSettingsJson : {
 		'tmpOPTIN': ""
 	}
 
@@ -61,9 +61,4 @@ App {
    		doc3.open("PUT", "file:///mnt/data/tsc/animation_userSettings.json");
    		doc3.send(JSON.stringify(setJson));
 	}
-
-
-
-
-
 }
