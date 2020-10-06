@@ -35,7 +35,7 @@ Screen {
 		id: myLabel2
 		font.pixelSize:  isNxt ? 20 : 16
 		font.family: qfont.regular.name
-		text: "For this a website will be polled each 5 minutes to check special anaimation events."
+		text: "For this a website will be polled each 5 minutes to check special animation events."
 		anchors {
 			left: parent.left
 			top: myLabel.bottom			
