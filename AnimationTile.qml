@@ -42,74 +42,74 @@ Tile {
 
 	function checkforAnimation() {
 		if (app.optIN){
-		try {
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange=function() {
-				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-					if (xmlhttp.status == 200) {
-							var JsonString = xmlhttp.responseText;
-        						var JsonObject= JSON.parse(JsonString);
+			try {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+						if (xmlhttp.status == 200) {
+								var JsonString = xmlhttp.responseText;
+									var JsonObject= JSON.parse(JsonString);
 
-							var animationmode = JsonObject['animationmode'];
-							var animationtype = JsonObject['animationtype'];
-	
-							if (animationmode  == 'Start') {
-								animation(animationtype);							
-							}
-							if (animationmode  == 'Stop') {
-								animationscreen.animationRunning= false;
-								animationscreen.isVisibleinDimState= false;
-							}
+								var animationmode = JsonObject['animationmode'];
+								var animationtype = JsonObject['animationtype'];
+		
+								if (animationmode  == 'Start') {
+									animation(animationtype);							
+								}
+								if (animationmode  == 'Stop') {
+									animationscreen.animationRunning= false;
+									animationscreen.isVisibleinDimState= false;
+								}
+						}
 					}
 				}
+				xmlhttp.open("GET", triggerurl);
+				xmlhttp.send();
+			} catch(e) {
 			}
-			xmlhttp.open("GET", triggerurl);
-			xmlhttp.send();
-		} catch(e) {
-		}
 		}
 	}
 
 
-        function getData() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    var obj = JSON.parse(xmlhttp.responseText);
-                    numberofItems =  obj.length
-		    model.clear()
-                    for (var i = 0; i < obj.length; i++){
-                      listview1.model.append({name: obj[i].name})
-                    }
-                }
-            }
-            xmlhttp.open("GET", baseurl + "nameindex.json", true);
-            xmlhttp.send();
-        }
-
-
-
-       function animation(animationName) {
-           var xmlhttp = new XMLHttpRequest();
-	   var url = baseurl +  animationName + ".json"
-           xmlhttp.onreadystatechange=function() {
-               if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				   var obj = JSON.parse(xmlhttp.responseText);
-				   animationscreen.animationRunning= true;
-				   animationscreen.qmlAnimationURL= obj.component;
-				   if (isNxt) {
-						animationscreen.animationInterval= obj.Toon2time
-					}
-					else{
-					animationscreen.animationInterval= obj.Toon1time
-					}
-				   if (obj.visibleindimstate==="yes"){animationscreen.isVisibleinDimState= true}
-				   if (obj.visibleindimstate==="no"){animationscreen.isVisibleinDimState= false}
+	function getData() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				var obj = JSON.parse(xmlhttp.responseText);
+				numberofItems =  obj.length
+		model.clear()
+				for (var i = 0; i < obj.length; i++){
+				  listview1.model.append({name: obj[i].name})
 				}
-           }
-           xmlhttp.open("GET", url, true);
-           xmlhttp.send();
-       }
+			}
+		}
+		xmlhttp.open("GET", baseurl + "nameindex.json", true);
+		xmlhttp.send();
+	}
+
+
+
+	function animation(animationName) {
+	var xmlhttp = new XMLHttpRequest();
+	var url = baseurl +  animationName + ".json"
+	   xmlhttp.onreadystatechange=function() {
+		   if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+			   var obj = JSON.parse(xmlhttp.responseText);
+			   animationscreen.animationRunning= true;
+			   animationscreen.qmlAnimationURL= obj.component;
+			   if (isNxt) {
+					animationscreen.animationInterval= obj.Toon2time
+				}
+				else{
+				animationscreen.animationInterval= obj.Toon1time
+				}
+			   if (obj.visibleindimstate==="yes"){animationscreen.isVisibleinDimState= true}
+			   if (obj.visibleindimstate==="no"){animationscreen.isVisibleinDimState= false}
+			}
+	   }
+	   xmlhttp.open("GET", url, true);
+	   xmlhttp.send();
+	}
 
 	NewTextLabel {
 		id: startText
@@ -202,7 +202,8 @@ Tile {
 				Text {
 					id: tst
 					 text: name
-				font.pixelSize: isNxt ? 22 : 17				
+				font.pixelSize: isNxt ? 22 : 17
+				//font.family: labelTitle.font.family
 				}
 			}
 		}
