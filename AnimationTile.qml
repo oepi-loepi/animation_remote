@@ -30,7 +30,7 @@ Tile {
 
 	Timer {
 		id: animationcheckTimer
-		running: true
+		running: app.optIN
 		repeat: true
 		triggeredOnStart: true
 		interval: 300000
@@ -41,6 +41,7 @@ Tile {
 
 
 	function checkforAnimation() {
+		if (app.optIN){
 		try {
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange=function() {
@@ -65,6 +66,7 @@ Tile {
 			xmlhttp.open("GET", triggerurl);
 			xmlhttp.send();
 		} catch(e) {
+		}
 		}
 	}
 
