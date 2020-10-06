@@ -1,0 +1,20 @@
+1.2.2
+- remote triggerfile added and config screen for opt-in
+
+1.2.1
+- location of app icon moved to tsc folder
+
+1.2.0
+- listview added instead of buttons
+
+1.1.0
+- working with component instead of function
+
+1.0.2
+-Roach2 added
+
+1.0.1
+-Snow and Whine added to tile
+
+1.0.0
+- First Release:
