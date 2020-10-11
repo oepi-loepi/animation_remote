@@ -16,7 +16,9 @@ Tile {
 	property string baseurl : "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/"
 	property string triggerurl : "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile"
 	property int  numberofItems :0
+	property bool triggerfileactionreceived : false
 
+	//every day the list on the tile will be filled again	
 	Timer {
 		id: loadTimer
 		running: true
@@ -27,7 +29,8 @@ Tile {
 			getData()		
 		}
 	}
-
+	
+	//every 5 minutes the trigger file will be checked if action is needed
 	Timer {
 		id: animationcheckTimer
 		running: app.optIN
@@ -39,9 +42,21 @@ Tile {
 		}
 	}
 
+	//when a trigger from the trigger file is received, hold checking the trigger file for 12 minutes to give some time for the trigger file operator
+	Timer {
+		id: animationholdTimer
+		running: triggerfileactionreceived
+		repeat: false
+		triggeredOnStart: false
+		interval: 720000
+		onTriggered: {
+			triggerfileactionreceived = false;
+		}
+	}
+
 
 	function checkforAnimation() {
-		if (app.optIN){
+		if (app.optIN & !triggerfileactionreceived){
 			try {
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange=function() {
@@ -54,11 +69,13 @@ Tile {
 								var animationtype = JsonObject['animationtype'];
 		
 								if (animationmode  == 'Start') {
-									animation(animationtype);							
+									animation(animationtype);
+									triggerfileactionreceived = true;							
 								}
 								if (animationmode  == 'Stop') {
 									animationscreen.animationRunning= false;
 									animationscreen.isVisibleinDimState= false;
+									triggerfileactionreceived = true;
 								}
 						}
 					}
