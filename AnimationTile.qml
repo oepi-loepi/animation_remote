@@ -48,7 +48,7 @@ Tile {
 		running: triggerfileactionreceived
 		repeat: false
 		triggeredOnStart: false
-		interval: 720000
+		interval: 360000
 		onTriggered: {
 			triggerfileactionreceived = false;
 		}
