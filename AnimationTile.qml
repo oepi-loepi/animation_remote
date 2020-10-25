@@ -116,8 +116,16 @@ Tile {
 			   var obj = JSON.parse(xmlhttp.responseText);
 			   animationscreen.animationRunning= true;
 			   animationscreen.qmlAnimationURL= obj.component;
-			   animationscreen.staticImageT1 = obj.staticImageT1
-			   animationscreen.staticImageT2 = obj.staticImageT2
+			   
+//////////////////////////////////////////////////////////////////
+////de volgende regels uncommenten als de resource is aangepast
+
+
+			   //animationscreen.staticImageT1 = obj.staticImageT1
+			   //animationscreen.staticImageT2 = obj.staticImageT2
+
+//////////////////////////////////////////////////////////////////
+
 			   if (isNxt) {
 					animationscreen.animationInterval= obj.Toon2time
 				}
