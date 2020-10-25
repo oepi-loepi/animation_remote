@@ -4,7 +4,9 @@ import qb.components 1.0
 
 
 //		animationscreen.animationInterval = interval between new sprites to show
-//		animationscreen.qmlAnimationURL = animationtype by url ( like >>>>    "qrc:/qb/components/Balloon.qml"    <<<<)
+//		animationscreen.qmlAnimationURL = animationtype by url ( like >>>>    "Balloon.qml"    <<<<)
+//		animationscreen.staticImageT1  =  static picture as background for Toon1 (600x480 pixels. Transparent PNG, like sint_T1.png)
+//		animationscreen.staticImageT2  =  static picture as background for Toon2 (1024x800 pixels. Transparent PNG, like sint_T2.png)
 //		animationscreen.animationRunning =true or false to start and stop the animation (current animation will be finished
 //		animationscreen.visibleindimstate =true or falsewill choose if the animation is visible in the dimstate
 //		animationscreen.animationDuration = maximum time for the animation will last after the start command has finished and no stop command is given (in ms)
@@ -65,9 +67,9 @@ Tile {
 								var JsonString = xmlhttp.responseText;
 									var JsonObject= JSON.parse(JsonString);
 
-								var animationmode = JsonObject['animationmode'];
-								var animationtype = JsonObject['animationtype'];
-		
+									var animationmode = JsonObject['animationmode'];
+									var animationtype = JsonObject['animationtype'];
+									
 								if (animationmode  == 'Start') {
 									animation(animationtype);
 									triggerfileactionreceived = true;							
@@ -114,11 +116,13 @@ Tile {
 			   var obj = JSON.parse(xmlhttp.responseText);
 			   animationscreen.animationRunning= true;
 			   animationscreen.qmlAnimationURL= obj.component;
+			   animationscreen.staticImageT1 = obj.staticImageT1
+			   animationscreen.staticImageT2 = obj.staticImageT2
 			   if (isNxt) {
 					animationscreen.animationInterval= obj.Toon2time
 				}
 				else{
-				animationscreen.animationInterval= obj.Toon1time
+					animationscreen.animationInterval= obj.Toon1time
 				}
 			   if (obj.visibleindimstate==="yes"){animationscreen.isVisibleinDimState= true}
 			   if (obj.visibleindimstate==="no"){animationscreen.isVisibleinDimState= false}
