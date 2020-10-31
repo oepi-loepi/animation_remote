@@ -117,15 +117,6 @@ Tile {
 			   animationscreen.animationRunning= true;
 			   animationscreen.qmlAnimationURL= obj.component;
 			   
-//////////////////////////////////////////////////////////////////
-////de volgende regels uncommenten als de resource is aangepast
-
-
-			   //animationscreen.staticImageT1 = obj.staticImageT1
-			   //animationscreen.staticImageT2 = obj.staticImageT2
-
-//////////////////////////////////////////////////////////////////
-
 			   if (isNxt) {
 					animationscreen.animationInterval= obj.Toon2time
 				}
@@ -134,6 +125,13 @@ Tile {
 				}
 			   if (obj.visibleindimstate==="yes"){animationscreen.isVisibleinDimState= true}
 			   if (obj.visibleindimstate==="no"){animationscreen.isVisibleinDimState= false}
+			   
+		           try {
+			   	animationscreen.staticImageT1 = obj.staticImageT1
+			   	animationscreen.staticImageT2 = obj.staticImageT2
+			   } catch(e) {
+			   }
+
 			}
 	   }
 	   xmlhttp.open("GET", url, true);
